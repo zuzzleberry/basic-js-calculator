@@ -8,7 +8,7 @@ let integerStack = [];
 let operatorStack = [];
 let lastInputIsOperator = false;
 let lastResult;
-let bufferResult;
+let bufferResult = null;
 
 // Reads inputs and determins appropriate operation
 let parser = (operator, x, y) => {
@@ -30,22 +30,18 @@ let parser = (operator, x, y) => {
 
 // Resets arrays / Cancels operation
 let reset = () => {
-    console.log("C");
     sliceCount = 0;
     formula = [];
     formulaSlices = [[]];
     integerStack = [];
     operatorStack = [];
     screen.innerHTML = "0";
-    if (bufferResult !== null) {
-        bufferResult = null;
-    }
 }
 
 buttons.addEventListener("click", (e) => {
-
     if (e.target.id === "C") {
         reset();
+        bufferResult = null;
     }
     if (e.target.id !== "=" && e.target.id !== "C" && e.target.id !== "buttons") {
         formula.push(e.target.id);
@@ -71,7 +67,7 @@ buttons.addEventListener("click", (e) => {
             e.target.id === "-" ||
             e.target.id === "*" ||
             e.target.id === "/") {
-            console.log(formulaSlices)
+
             if (bufferResult !== null) {
                 formulaSlices.push([])
                 formulaSlices[sliceCount].push(bufferResult);
@@ -91,7 +87,7 @@ buttons.addEventListener("click", (e) => {
         for (i = 0; i < formulaSlices.length; i++) {
             if (Number.isInteger(parseInt(formulaSlices[i][0])) === true) {
                 integerStack.push(parseInt(formulaSlices[i].join("")));
-                console.log(integerStack)
+             
             } else if (
                 formulaSlices[i][0] === "+" ||
                 formulaSlices[i][0] === "-" ||
