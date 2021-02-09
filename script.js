@@ -37,6 +37,9 @@ let reset = () => {
     integerStack = [];
     operatorStack = [];
     screen.innerHTML = "0";
+    if (bufferResult !== null) {
+        bufferResult = null;
+    }
 }
 
 buttons.addEventListener("click", (e) => {
