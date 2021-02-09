@@ -1,0 +1,29 @@
+#main {
+    display: flex;
+    max-width: 800px;
+}
+
+#screen {
+    display: block;
+    width: 16rem;
+    height: 4rem;
+    background: greenyellow;
+}
+#calculator {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    max-width: 16rem;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.calculator-button {
+    width: 4rem;
+    height: 4rem;
+}
